@@ -316,9 +316,13 @@ def run(content_fname,
         iterations=iterations)
 
     s = unchop(result, hop_size=hop_length, frame_size=frame_size)
-    librosa.output.write_wav(output_fname, s, sr=sr)
+    #librosa.output.write_wav(output_fname, s, sr=sr)
     s = utils.limiter(s)
-    librosa.output.write_wav(output_fname + '.limiter.wav', s, sr=sr)
+    #librosa.output.write_wav(output_fname + '.limiter.wav', s, sr=sr)
+    output_fname = 'result.wav'
+    import soundfile as sf
+    sf.write(output_fname, s, sr)
+    clear_output()
 
 
 def batch(content_path, style_path, output_path, model):
