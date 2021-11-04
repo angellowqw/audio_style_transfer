@@ -169,9 +169,12 @@ def run(content_fname,
         x = librosa.istft(S, hop_length)
         p = np.angle(librosa.stft(x, n_fft, hop_length))
 
-    librosa.output.write_wav('prelimiter.wav', x, sr)
+    #librosa.output.write_wav('prelimiter.wav', x, sr)
     limited = utils.limiter(x)
-    librosa.output.write_wav(output_fname, limited, sr)
+    #librosa.output.write_wav(output_fname, limited, sr)
+    output_fname = 'prelimiter.wav'
+    import soundfile as sf
+    sf.write(output_fname, limited, sr)
 
 
 def batch(content_path, style_path, output_path):
