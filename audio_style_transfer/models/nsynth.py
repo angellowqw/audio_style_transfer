@@ -346,13 +346,16 @@ def run(content_fname,
         raise ValueError('Unsupported model type: {}.'.format(model))
 
     x = utils.unchop(result, hop_size, frame_size)
-    librosa.output.write_wav('prelimiter.wav', x, sr)
+    #librosa.output.write_wav('prelimiter.wav', x, sr)
+    import soundfile as sf
+    sf.write('prelimiter.wav', x, sr)
 
     limited = utils.limiter(x)
     output_fname = '{}/{}+{}.wav'.format(output_path,
                                          content_fname.split('/')[-1],
                                          style_fname.split('/')[-1])
-    librosa.output.write_wav(output_fname, limited, sr=sr)
+    #librosa.output.write_wav(output_fname, limited, sr=sr)
+    sf.write(output_fname, limited, sr=sr)
 
 
 def batch(content_path, style_path, output_path, model):
