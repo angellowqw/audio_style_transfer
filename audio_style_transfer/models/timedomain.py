@@ -322,7 +322,7 @@ def run(content_fname,
     output_fname = 'result.wav'
     import soundfile as sf
     sf.write(output_fname, s, sr)
-    clear_output()
+    #clear_output()
 
 
 def batch(content_path, style_path, output_path, model):
