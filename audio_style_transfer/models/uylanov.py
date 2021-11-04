@@ -170,10 +170,10 @@ def run(content_fname,
         p = np.angle(librosa.stft(x, n_fft, hop_length))
 
     #librosa.output.write_wav('prelimiter.wav', x, sr)
+    import soundfile as sf
+    sf.write('prelimiter.wav', x, sr)
     limited = utils.limiter(x)
     #librosa.output.write_wav(output_fname, limited, sr)
-    output_fname = 'prelimiter.wav'
-    import soundfile as sf
     sf.write(output_fname, limited, sr)
 
 
